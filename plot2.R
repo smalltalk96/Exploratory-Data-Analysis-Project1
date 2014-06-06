@@ -10,16 +10,10 @@ data<-cbind(powerdata, datetime=strptime(paste(powerdata$Date,powerdata$Time), "
 #names(d1)<-gsub("*", "_", names(d1))
 data<-subset(data, (datetime>=strptime("2007-02-01", "%Y-%m-%d", tz="UTC") & (datetime<strptime("2007-02-03", "%Y-%m-%d", tz="UTC"))))
 
-png(filename="plot1.png", width=480, height=480, units="px")
+png(filename="plot2.png", width=480, height=480, units="px")
 
 with(data, {
-  #plot1
-  hist(Global_active_power, col="red", ylim=c(0, 1200), main="Global active power", xlab="Global active power(kilowatts)")
-  #plot2
-  #plot(d1$datetime, d1$Global_active_power, type="l")
-  #plot3/4
-
-  #xyplot()
+  plot(datetime, Global_active_power, type="l")
 })
 
 dev.off()
